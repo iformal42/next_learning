@@ -8,8 +8,8 @@ export async function getCabin(id) {
   const { data, error } = await supabase
     .from('cabins')
     .select('*')
-    .eq('id', id)
-    .single();
+    .eq('id', 1)
+    .maybeSingle();
 
   // For testing
   // await new Promise((res) => setTimeout(res, 1000));
