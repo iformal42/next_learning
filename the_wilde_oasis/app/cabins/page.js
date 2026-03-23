@@ -5,7 +5,8 @@ import Spinner from "../_components/Spinner";
 export const metadata = {
   title: "Cabins"
 }
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export default function Page() {
 
 
