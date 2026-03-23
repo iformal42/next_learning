@@ -1,5 +1,6 @@
 import { eachDayOfInterval } from 'date-fns';
 import { supabase } from './supabase';
+import { notFound } from 'next/navigation';
 export const dynamic = "force-dynamic";
 /////////////
 // GET
@@ -8,15 +9,19 @@ export async function getCabin(id) {
   const { data, error } = await supabase
     .from('cabins')
     .select('*')
-    .eq('id', 1)
-    .maybeSingle();
+    .eq('id', id)
+    .single();
 
   // For testing
   // await new Promise((res) => setTimeout(res, 1000));
 
   if (error) {
-    console.error(error);
+    console.error("error", error.message);
+    notFound();
+
   }
+  
+
 
   return data;
 }
@@ -30,6 +35,7 @@ export async function getCabinPrice(id) {
 
   if (error) {
     console.error(error);
+
   }
 
   return data;
